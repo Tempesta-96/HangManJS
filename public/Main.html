@@ -1,0 +1,86 @@
+<html>
+
+<head>
+  <title>HangMan App</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<style>
+
+  #header{
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    background-color:lightblue;
+    height : 6%;
+    width : 100%;
+  }
+
+  #container{
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    height : 20%;
+    width : 100%;
+  }
+  #progressbar{
+    height: 30px;
+    text-align: center; /* To center it horizontally (if you want) */
+    line-height: 30px; /* To center it vertically */
+    color: black; 
+}
+
+#bottom{
+  margin: 0 auto;
+  }
+</style>
+
+<body ng-app="HangmanApp" ng-controller="GameController">
+  <div id=header>
+    <h1><b>~~HANG-MAN~~</b></h1>
+  </div>
+
+  <div id="container">
+    Guess the word <br>
+    <b>{{displayWord}}</b><br>
+    You have {{guess}} guesses left:<br>
+    Incorrect Letters:
+    <span ng-repeat="letters in incorrectLettersChosen">
+      {{letters}}
+    </span><br>
+    Correct Letters:
+    <span ng-repeat="letters in correctLettersChosen">
+      {{letters}}
+    </span><br>
+
+    <div>
+      <input type="text" name="guess" ng-model="input.letter">
+        <button ng-click="letterChosen()">Submit</button>
+    </div>
+
+    <div id="progressbar" style="background-color:{{barColor}}; width: {{progressWidth}}%">
+      {{progress}}/60
+    </div>
+  </div>
+<br>
+  <div id="bottom" style="float:center">
+    <div id="head" ng-hide="head">
+      <img src="head.png" style="width:300px ; height:500px">
+    </div>
+    <div id="body" ng-hide="body">
+      <img src="body.png" style="width:300px ; height:500px">
+    </div>
+    <div id="rightHand" ng-hide="rightHand">
+      <img src="righthand.png" style="width:300px ; height:500px">
+    </div>
+    <div id="leftHand" ng-hide="leftHand">
+      <img src="lefthand.png" style="width:300px ; height:500px">
+    </div>
+    <div id="leftLeg" ng-hide="leftLeg">
+      <img src="leftleg.png" style="width:300px ; height:500px">
+    </div>
+    <div id="rightLeg" ng-hide="rightLeg">
+      <img src="rightleg.png" style="width:300px ; height:500px">
+    </div>
+  </div>
+</body>
+
+</html>
